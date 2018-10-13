@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hardware Room</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+  <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+  <!-- <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script> -->
+  <script src="https://tonejs.github.io/build/Tone.min.js"></script>
+  <!-- <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.1.1/dist/aframe-physics-system.min.js"></script> -->
+  <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.0.2/dist/aframe-extras.min.js"></script>
+  <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+
+  <!-- <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script> -->
+
+</head>
+
+<body>
+
+
+  <a-scene>
+    <!-- <a-scene sound="src: url(./assets/audio/ambience/room-tone.mp3); loop:true; autoplay:true; volume:0.5; positional: false"> -->
+    <a-assets>
+
+      <!-- // MODELS -->
+      <a-asset-item id="comp-obj" src="./models/computer.obj"></a-asset-item>
+      <a-asset-item id="comp-mtl" src="./models/computer.mtl"></a-asset-item>
+      <a-asset-item id="chair-obj" src="./models/chair.obj"></a-asset-item>
+      <a-asset-item id="chair-mtl" src="./models/chair.mtl"></a-asset-item>
+      <a-asset-item id="wall-obj" src="./models/wall_01.obj"></a-asset-item>
+      <a-asset-item id="wall-mtl" src="./models/wall_01.mtl"></a-asset-item>
+
+      <!-- <video id="processing" autoplay loop="true" src="./assets/processing.mp4"></video> -->
+
+
+      <!-- // AUDIO FILES -->
+      <audio id="computer-startup" src="./assets/audio/sfx/computer-startup.mp3"></audio>
+      <!-- <audio id="background" src="./assets/audio/ambience/room-tone.mp3"></audio> -->
+      <audio id="beep" src="./assets/audio/sfx/short_beep01.mp3"></audio>
+      <audio id="beep-loop" src="./assets/audio/sfx/beep_loop01.mp3"></audio>
+      <audio id="beep-loop2" src="./assets/audio/sfx/beep_loop02.mp3"></audio>
+      <audio id="beep2" src="./assets/audio/sfx/short_beep03.mp3"></audio>
+      <audio id="beep3" src="./assets/audio/sfx/short_beep07.mp3"></audio>
+      <audio id="dot-matrix" src="./assets/audio/sfx/dot_matrix.mp3"></audio>
+
+
+
+    </a-assets>
+
+    <a-entity>
+      <a-entity obj-model="obj: #comp-obj; mtl: #comp-mtl" position="-5 0.1 -5" rotation="0 -90 0" scale="0.25 0.25 0.25">
+        <!-- Computer Startup -->
+        <a-box material="opacity: 0" scale="3.6 3.6 3.6" position="1.7 5.4 -17.4" sound="src: #computer-startup; volume: 0.8; on: click"></a-box>
+
+
+        <!-- Dot Matrix Printer -->
+        <a-box material="opacity:0" scale="4.7 4.3 4.2" position="8.8 3.03 -0.9" sound="src: #dot-matrix; volume: 0.6; on: click"></a-box>
+
+
+        <a-entity sound="src: #beep-loop; autoplay: true; loop: true; volume: 0.6" position="-12.363 5.37 -3.511"></a-entity>
+
+        <a-entity sound="src: #beep-loop2; autoplay: true; loop: true; volume: 0.6" position="-13.477 6 -8.97"></a-entity>
+
+      </a-entity>
+
+
+
+
+      <a-entity obj-model="obj: #chair-obj; mtl: #chair-mtl" position="-1.3 0.1 -2.425" rotation="-90 125 0" scale="1.5 1.5 1.5"></a-entity>
+
+      <a-entity obj-model="obj: #comp-obj; mtl: #comp-mtl" position="4 0.1 -8.3" rotation="0 180 0" scale="0.25 0.25 0.25"></a-entity>
+
+    </a-entity>
+
+
+
+    <a-entity id="rig" movement-controls>
+      <a-entity camera position="0 1.8 0" look-controls="pointerLockEnabled: true">
+
+        <a-cursor></a-cursor>
+      </a-entity>
+    </a-entity>
+
+
+
+    <a-plane color="black" rotation="-90 0 0" position="0 0.1 0" width="20" height="20">
+
+    </a-plane>
+
+    <a-sky color="grey"></a-sky>
+
+
+  </a-scene>
+
+  <script>
+    const fan = new Tone.Synth({
+      volume: -15, // the oscillator volume set to -12dB
+      oscillator: {
+        frequency: 24, // oscillator type to square wave
+      },
+      envelope: {
+        attack: 5,
+        decay: 2,
+        sustain: 1,
+        release: 1
+      }
+    }).toMaster() // connect the synth's output to the filter
+
+    const noise = new Tone.Noise({
+      type: "pink",
+      volume: -33,
+      fadeIn: "+5",
+    })
+
+
+    // fan.connect(noise)
+
+    const autoFilter = new Tone.AutoFilter({
+      "frequency": "8m",
+      "min": 600,
+      "max": 700
+    }).toMaster()
+
+    noise.connect(autoFilter)
+    fan.triggerAttack(24, "+0.5");
+    noise.start()
+
+
+  </script>
+
+
+  <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+
+</html>
