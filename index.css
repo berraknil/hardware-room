@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+.controls {
+  position: absolute;
+  z-index: 100;
+
+  /* justify-content: space-around; */
+  right: 2rem;
+  top: 2rem;
+  min-height: 10rem;
+  padding: 1rem;
+  border: 1px solid black;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.controls button {
+  margin: .5rem 0;
+}
+
+.controls fieldset {
+  display: flex;
+  flex-direction: column;
+}

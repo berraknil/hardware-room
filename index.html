@@ -19,8 +19,72 @@
 
 <body>
 
-  <button onclick="start()">Start Environment</button>
-  <button onclick="stop()">Stop Environment</button>
+  <div class="controls">
+    <fieldset>
+      <legend>Audio settings</legend>
+
+      <button onclick="start()">Start Environment</button>
+      <button onclick="stop()">Stop Environment</button>
+      <label for="volume">Volume</label>
+      <input type="range" id="start" name="volume" onchange="setVolume()" min="0" max="11" />
+
+      <label for="cowbell">Cowbell</label>
+      <input type="range" id="cowbell" name="cowbell" min="0" max="100" value="90" step="2" />
+
+    </fieldset>
+  </div>
+
+  <a-scene>
+    <a-assets>
+
+      <!-- // MODELS -->
+      <a-asset-item id="comp-obj" src="./models/computer.obj"></a-asset-item>
+      <a-asset-item id="comp-mtl" src="./models/computer.mtl"></a-asset-item>
+      <a-asset-item id="chair-obj" src="./models/chair.obj"></a-asset-item>
+      <a-asset-item id="chair-mtl" src="./models/chair.mtl"></a-asset-item>
+
+      <audio id="computer-startup" src="./assets/audio/sfx/computer-startup.mp3"></audio>
+      <!-- <audio id="background" src="./assets/audio/ambience/room-tone.mp3"></audio> -->
+      <audio id="beep" src="./assets/audio/sfx/short_beep01.mp3"></audio>
+      <audio id="beep-loop" src="./assets/audio/sfx/beep_loop01.mp3"></audio>
+      <audio id="beep-loop2" src="./assets/audio/sfx/beep_loop02.mp3"></audio>
+      <audio id="beep2" src="./assets/audio/sfx/short_beep03.mp3"></audio>
+      <audio id="beep3" src="./assets/audio/sfx/short_beep07.mp3"></audio>
+      <audio id="dot-matrix" src="./assets/audio/sfx/dot_matrix.mp3"></audio>
+    </a-assets>
+
+    <a-entity obj-model="obj: #comp-obj; mtl: #comp-mtl" position="-5 0.1 -5" rotation="0 -90 0" scale="0.25 0.25 0.25">
+      <!-- Computer Startup -->
+      <a-box material="opacity: 0" scale="3.6 3.6 3.6" position="1.7 5.4 -17.4" sound="src: #computer-startup; volume: 0.8; on: click"></a-box>
+
+
+      <!-- Dot Matrix Printer -->
+      <a-box material="opacity:0" scale="4.7 4.3 4.2" position="8.8 3.03 -0.9" sound="src: #dot-matrix; volume: 0.6; on: click"></a-box>
+
+
+      <a-entity sound="src: #beep-loop; autoplay: false; loop: true; volume: 0.6" position="-12.363 5.37 -3.511"></a-entity>
+
+      <a-entity sound="src: #beep-loop2; autoplay: false; loop: true; volume: 0.6" position="-13.477 6 -8.97"></a-entity>
+
+    </a-entity>
+
+    <a-entity id="rig" movement-controls>
+      <a-entity camera position="0 1.8 0" look-controls="pointerLockEnabled: true">
+
+        <a-cursor></a-cursor>
+      </a-entity>
+    </a-entity>
+
+
+
+    <a-plane color="black" rotation="-90 0 0" position="0 0.1 0" width="20" height="20">
+
+    </a-plane>
+
+    <a-sky color="grey"></a-sky>
+
+  </a-scene>
+
 </body>
 
 

@@ -13,7 +13,7 @@ const fan = new Tone.Synth({
 
 const noise = new Tone.Noise({
   type: 'pink',
-  volume: -33,
+  volume: -35,
   fadeIn: '+5'
 })
 
@@ -38,5 +38,8 @@ const stop = () => {
   noise.stop()
 }
 
+const setVolume = () => {
+  console.log('set volume')
+}
 // filter the noise more on the middle frequencies
 // put dedicated controls for volume and frequency and filters
