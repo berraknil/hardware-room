@@ -1,0 +1,68 @@
+# created with pCon.planner
+
+newmtl mat_alupolis6b0059b8
+Ka 0.75294101 0.75294101 0.75294101
+Kd 0.75294101 0.75294101 0.75294101
+Ks 1 1 1
+Ns 102.4
+illum 2
+
+newmtl mat_alusilve4ffe8abf
+Ka 0.75 0.75 0.75
+Kd 0.75 0.75 0.75
+Ks 0.5 0.5 0.5
+Ns 30
+illum 2
+
+newmtl mat_blackpol45b058e1
+Ka 0.25 0.25 0.25
+Kd 0.25 0.25 0.25
+Ks 0.02 0.02 0.02
+Ns 90
+illum 2
+
+newmtl mat_chrome313fee04
+Ka 0.68150699 0.68150699 0.68150699
+Kd 0.68150699 0.68150699 0.68150699
+Ks 0.92651802 0.92651802 0.92651802
+Ns 50
+illum 2
+
+newmtl mat_grayaa1ac8a6
+Ka 0.574 0.574 0.574
+Kd 1 1 1
+map_Kd a567c328.png
+Ks 0.02 0.02 0.02
+Ns 50
+illum 2
+
+newmtl mat_m14be08f9cb
+Ka 0.38 0.38800001 0.447
+Kd 1 1 1
+map_Kd 7a08ff47.png
+Ks 0 0 0
+Ns 30
+illum 2
+
+newmtl mat_m14cda70e83
+Ka 0.38 0.38800001 0.447
+Kd 1 1 1
+map_Kd 7a08ff47.png
+Ks 0 0 0
+Ns 30
+illum 2
+
+newmtl mat_respaldoe32c00f4
+Ka 0 0 0
+Kd 0 0 0
+Ks 0 0 0
+Ns 30
+illum 2
+
+newmtl mat_s83766d4f2
+Ka 0.30000001 0.30000001 0.30000001
+Kd 0.30000001 0.30000001 0.30000001
+Ks 0.025 0.025 0.025
+Ns 30
+illum 2
+
