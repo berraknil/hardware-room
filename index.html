@@ -13,6 +13,7 @@
 
   <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.0.2/dist/aframe-extras.min.js"></script>
   <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-aabb-collider-component@^2.2.1/dist/aframe-aabb-collider-component.min.js"></script>
 
   <script src="./audio.js"></script>
 </head>
@@ -27,13 +28,17 @@
       <button onclick="stop()">Stop Environment</button>
       <button onclick="log()">Logger</button>
       <label for="volume">AC Rotor Volume</label>
-      <input type="range" id="fan" name="Rotor Volume" oninput="setRotorVolume(this.value)" min="-20" max="12" value="-6" step="0.5"/>
+      <input type="range" id="fan" name="Rotor Volume" oninput="setRotorVolume(this.value)" min="-20" max="12" value="-6"
+        step="0.5" />
       <label for="volume">AC Rotor Frequency</label>
-      <input type="range" id="fan freq" name="Rotor Frequency" oninput="setRotorFrequency(this.value)" min="4" max="60" value="36" step="0.5"/>
+      <input type="range" id="fan freq" name="Rotor Frequency" oninput="setRotorFrequency(this.value)" min="4" max="60"
+        value="36" step="0.5" />
       <label for="volume">AC Noise Volume</label>
-      <input type="range" id="noise" name="Noise Volume" oninput="setNoiseVolume(this.value)" min="-30" max="12" value="-8" step="0.5"/>
+      <input type="range" id="noise" name="Noise Volume" oninput="setNoiseVolume(this.value)" min="-30" max="12" value="-8"
+        step="0.5" />
       <label for="volume">Env Master Volume</label>
-      <input type="range" id="master" name="Master Volume" oninput="setMasterVolume(this.value)" min="-60" max="12" value="-9" step="0.5"/>
+      <input type="range" id="master" name="Master Volume" oninput="setMasterVolume(this.value)" min="-60" max="12"
+        value="-9" step="0.5" />
 
     </fieldset>
   </div>
@@ -46,6 +51,8 @@
       <a-asset-item id="comp-mtl" src="./models/computer.mtl"></a-asset-item>
       <a-asset-item id="chair-obj" src="./models/chair.obj"></a-asset-item>
       <a-asset-item id="chair-mtl" src="./models/chair.mtl"></a-asset-item>
+      <a-asset-item id="ac-obj" src="./models/1286_Air Conditioner.obj"></a-asset-item>
+      <a-asset-item id="ac-mtl" src="./models/1286_Air Conditioner.mtl"></a-asset-item>
 
       <audio id="computer-startup" src="./assets/audio/sfx/computer-startup.mp3"></audio>
       <!-- <audio id="background" src="./assets/audio/ambience/room-tone.mp3"></audio> -->
@@ -72,10 +79,74 @@
 
     </a-entity>
 
+    <a-entity obj-model="obj: #ac-obj; mtl: #ac-mtl" position="-5.508842561829076 5.382800320793425 -0.2405037532270704"
+      rotation="0 0 0" scale="0.010 0.010 0.010">
+
+    </a-entity>
+
+
+
+
+
+
+
+    <a-entity position="-5.973836116782467 4.736 0" scale="0.2 9.266 19.933481762131663" geometry="" material="color:#c0c0c0"></a-entity>
+
+
+
+    <a-entity position="1.9777552489843178 4.736 -9.828164300074144" scale="0.2 9.266 16.03923138312353" geometry=""
+      material="color:#c0c0c0" rotation="0 -89.71575906195868 0"></a-entity>
+
+
+
+
+    <a-entity position="8.864821961292703 4.736 0" scale="0.2 9.266 19.933481762131663" geometry="" material="color:#c0c0c0"></a-entity>
+
+
+
+    <a-entity position="1.9777552489843178 4.736 9.756461484894741" scale="0.2 9.266 16.03923138312353" geometry=""
+      material="color:#c0c0c0" rotation="0 -89.71575906195868 0"></a-entity>
+
+    <a-entity position="1.981 9.058 -0.85" scale="0.2 16.879 21.375" geometry="" material="color:#000000" rotation="0 0 90.0745864681384"></a-entity>
+
+
+
+
+
     <a-entity obj-model="obj: #chair-obj; mtl: #chair-mtl" position="-1.3 0.1 -2.425" rotation="-90 125 0" scale="1.5 1.5 1.5"></a-entity>
+
 
     <a-entity obj-model="obj: #comp-obj; mtl: #comp-mtl" position="4 0.1 -8.3" rotation="0 180 0" scale="0.25 0.25 0.25"></a-entity>
 
+
+
+    <a-entity obj-model="obj:./models/computer.obj;mtl:./models/computer.mtl" position="-1.8417244594347402 0.1 8.22021011143604"
+      rotation="0 -0.7099712806305243 0" scale="0.25 0.25 0.25">
+      <!-- Computer Startup -->
+      <a-box material="opacity:0" scale="3.6 3.6 3.6" position="1.7 5.4 -17.4" sound="src:./assets/audio/sfx/computer-startup.mp3;volume:0.8;on:click"
+        geometry=""></a-box>
+
+
+      <!-- Dot Matrix Printer -->
+      <a-box material="opacity:0" scale="4.7 4.3 4.2" position="8.8 3.03 -0.9" sound="src:./assets/audio/sfx/dot_matrix.mp3;volume:0.6;on:click"
+        geometry=""></a-box>
+
+
+      <a-entity sound="src:./assets/audio/sfx/beep_loop01.mp3;loop:true;volume:0.6" position="-12.363 5.37 -3.511"></a-entity>
+
+      <a-entity sound="src:./assets/audio/sfx/beep_loop02.mp3;loop:true;volume:0.6" position="-13.477 6 -8.97"></a-entity>
+
+    </a-entity>
+
+    <a-entity obj-model="obj:./models/chair.obj;mtl:./models/chair.mtl" position="0.7230304060236878 0.1 3.9951800571139495"
+      rotation="-90 -88.9509083767739 0" scale="1.5 1.5 1.5"></a-entity>
+
+
+
+
+    <!-- // AC Controlla -->
+    <a-entity position="-4.530785787465589 0.5238144527048334 0" scale="0.5711869906013621 1.5402137484016505 2.8427564455066388"
+      geometry="" material=""></a-entity>
 
 
     <a-entity id="rig" movement-controls>
