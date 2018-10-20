@@ -23,10 +23,18 @@
   <div class="controls">
     <fieldset>
       <legend>Audio settings</legend>
+      <div class="transport">
 
-      <button onclick="start()">Start Environment</button>
-      <button onclick="stop()">Stop Environment</button>
-      <button onclick="log()">Logger</button>
+        <button onclick="start()">Start AC</button>
+        <button onclick="stop()">Stop AC</button>
+      </div>
+      <label for="oscillator">AC Speed</label>
+      <div class="speed">
+
+        <label for="sine"> <input class="osc-type" type="radio" id="sine" name="oscillator" value="sine" checked />Slow</label>
+        <label for="square"> <input class="osc-type" type="radio" id="square" name="oscillator" value="square" />Fast</label>
+        <label for="triangle"> <input class="osc-type" type="radio" id="triangle" name="oscillator" value="triangle" />Faster</label>
+      </div>
       <label for="volume">AC Rotor Volume</label>
       <input type="range" id="fan" name="Rotor Volume" oninput="setRotorVolume(this.value)" min="-20" max="12" value="-6"
         step="0.5" />
@@ -40,6 +48,7 @@
       <input type="range" id="master" name="Master Volume" oninput="setMasterVolume(this.value)" min="-60" max="12"
         value="-9" step="0.5" />
 
+      <button onclick="log()">Logger</button>
     </fieldset>
   </div>
 
@@ -79,15 +88,17 @@
 
     </a-entity>
 
-    <a-entity obj-model="obj: #ac-obj; mtl: #ac-mtl" position="-5.508842561829076 5.382800320793425 -0.2405037532270704"
-      rotation="0 0 0" scale="0.010 0.010 0.010">
+    <a-entity obj-model="obj: #ac-obj; mtl: #ac-mtl" position="-5.508842561829076 4 0.08716670674968241" rotation="0 0 0"
+      scale="0.010 0.010 0.010">
 
     </a-entity>
 
 
 
+    <a-entity obj-model="obj:./models/1286_Air Conditioner.obj;mtl:./models/1286_Air Conditioner.mtl" position="8.442536093925638 4 -0.2405037532270704"
+      rotation="0 180 0" scale="0.01 0.01 0.01">
 
-
+    </a-entity>
 
 
     <a-entity position="-5.973836116782467 4.736 0" scale="0.2 9.266 19.933481762131663" geometry="" material="color:#c0c0c0"></a-entity>
@@ -107,7 +118,7 @@
     <a-entity position="1.9777552489843178 4.736 9.756461484894741" scale="0.2 9.266 16.03923138312353" geometry=""
       material="color:#c0c0c0" rotation="0 -89.71575906195868 0"></a-entity>
 
-    <a-entity position="1.981 9.058 -0.85" scale="0.2 16.879 21.375" geometry="" material="color:#000000" rotation="0 0 90.0745864681384"></a-entity>
+    <a-entity position="1.981 9.058 -0.85" scale="0.2 16.879 21.375" geometry="" material="" rotation="0 0 90.0745864681384"></a-entity>
 
 
 
@@ -144,10 +155,8 @@
 
 
 
-    <!-- // AC Controlla -->
-    <a-entity position="-4.530785787465589 0.5238144527048334 0" scale="0.5711869906013621 1.5402137484016505 2.8427564455066388"
-      geometry="" material=""></a-entity>
-
+    <a-entity obj-model="obj:./models/computer.obj;mtl:./models/computer.mtl" position="7.145897418684974 0.0006892745081649443 4.957422616561636"
+      rotation="0 90 0" scale="0.25 0.25 0.25"></a-entity>
 
     <a-entity id="rig" movement-controls>
       <a-entity camera position="0 1.8 0" look-controls="pointerLockEnabled: true">

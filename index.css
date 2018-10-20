@@ -30,3 +30,12 @@ html {
   display: flex;
   flex-direction: column;
 }
+
+.speed {
+  margin: 1rem 0;
+}
+
+.transport {
+  /* display: flex;
+  justify-content: space-between; */
+}
