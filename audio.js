@@ -1,9 +1,10 @@
-
 // https://jsfiddle.net/xyjn4mao/
 
 const fan = new Tone.Synth({
   // volume: -3, // the oscillator volume set to -12dB
+
   oscillator: {
+    frequency: 36,
     type: 'triangle'
   },
   envelope: {
@@ -29,7 +30,7 @@ const autoFilter = new Tone.AutoFilter({
   // frequency: '8m',
   frequency: '1',
   min: 400,
-  max: 500,
+  max: 500
 })
 
 const noiseFader = new Tone.Volume(-8)
@@ -72,11 +73,46 @@ const setMasterVolume = val => {
   Tone.Master.volume.value = val
   console.log(Tone.Master.volume.value)
 }
+
+const setValues = (rotorVol, rotorFreq, noiseVol) => {
+  console.log(`
+    rotorVol: ${rotorVol}
+    rotorFreq: ${rotorFreq}
+    noiseVol: ${noiseVol}
+  `)
+  setRotorVolume(parseFloat(rotorVol))
+  setRotorFrequency(parseFloat(rotorFreq))
+  setNoiseVolume(parseFloat(noiseVol))
+}
+
+const slowSpeed = () => {
+  setValues(-9, 22, -12)
+}
+
+const fastSpeed = () => {
+  setValues(-3, 36, -6)
+}
+
+const fasterSpeed = () => {
+  setValues(3, 50, 0)
+}
+
+// document.querySelectorAll('.ac-speed').forEach(function(radio) {
+//   radio.addEventListener('input', function(e) {
+//     setValues(...e.target.value)
+//   })
+// })
+
 // filter the noise more on the middle frequencies
 // put dedicated controls for volume and frequency and filters
 
 const log = () => {
   // console.log(fan.volume.value)
+  console.log(`
+  rotorVol: ${fanFader.volume.value}
+  rotorFreq: ${fan.frequency.value}
+  noiseVol: ${noiseFader.volume.value}
+`)
   console.log(Tone.Master.volume.value)
 }
 // // https://jsfiddle.net/xyjn4mao/
@@ -126,4 +162,3 @@ const log = () => {
 // }
 // // filter the noise more on the middle frequencies
 // // put dedicated controls for volume and frequency and filters
-
