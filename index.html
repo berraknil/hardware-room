@@ -9,7 +9,6 @@
   <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
   <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
 
-  <script src="https://tonejs.github.io/build/Tone.min.js"></script>
 
   <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.0.2/dist/aframe-extras.min.js"></script>
   <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
@@ -19,58 +18,24 @@
 </head>
 
 <body>
+  <a-scene>
+    <a-assets>
 
-  <div class="controls">
-    <fieldset>
-      <legend>Audio settings</legend>
-      <div class="transport">
+      <audio id="computer-startup" src="./assets/audio/sfx/computer-startup.mp3"></audio>
+      <a-asset-item id="kitchen" src="/assets/kitchen/model.gltf"></a-asset-item>
+    </a-assets>
 
-        <button onclick="start()">Start AC</button>
-        <button onclick="stop()">Stop AC</button>
-      </div>
-      <label for="oscillator">AC Speed</label>
-      <div class="speed">
-
-        <label> <input class="ac-speed" type="radio" id="slow" name="air-conditioner-speed" value="slow" checked
-            oninput="slowSpeed()" />Slow</label>
-        <label> <input class="ac-speed" type="radio" id="fast" name="air-conditioner-speed" value="fast" oninput="fastSpeed()" />Fast</label>
-        <label> <input class="ac-speed" type="radio" id="faster" name="air-conditioner-speed" value="faster" oninput="fasterSpeed()" />Faster</label>
-      </div>
-      <div class="values">
-
-        <label for="volume">AC Rotor Volume</label>
-        <output class="ac-control" id="rotorVolumeValue" name="rotorVolumeValue">-6</output>
-      </div>
-      <input type="range" id="rotorVolume" name="Rotor Volume" oninput="setRotorVolume(this.value)" min="-20" max="12"
-        value="-6" step="0.5" />
-
-      <div class="values">
-        <label for="volume">AC Rotor Freq</label>
-        <output class="ac-control" id="rotorFreqValue" name="rotorFreqValue">22</output>
-      </div>
-      <input type="range" id="rotorFreq" name="Rotor Frequency" oninput="setRotorFrequency(this.value)" min="4" max="60"
-        value="22" step="0.5" />
+    <a-entity gltf-model="#kitchen" position="-3 0.5 -2" rotation="0 180 0 " sound="src: #computer-startup; volume: 0.8; on: click"></a-entity>
+    <a-entity position="0 1.6 0" camera wasd-controls look-controls="pointerLockEnabled: true">
+      <a-cursor></a-cursor>
+    </a-entity>
 
 
-      <div class="values">
-
-        <label for="volume">AC Noise Volume</label>
-        <output class="ac-control" id="noiseVolumeValue" name="noiseVolumeValue">-8</output>
-      </div>
-      <input type="range" id="noiseVolume" name="Noise Volume" oninput="setNoiseVolume(this.value)" min="-30" max="12" value="-8"
-        step="0.5" />
-      <div class="values">
 
 
-        <label for="volume">AC Volume</label>
-        <output class="ac-control-value" id="masterVolumeValue" name="masterVolumeValue">-9</output>
-      </div>
-      <input type="range" id="master" name="Master Volume" oninput="setMasterVolume(this.value)" min="-60" max="12"
-        value="-9" step="0.5" />
+    <!-- <a-sky color="grey"></a-sky> -->
 
-      <button onclick="log()">Logger</button>
-    </fieldset>
-  </div>
+  </a-scene>
 
 </body>
 
