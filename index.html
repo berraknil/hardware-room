@@ -36,176 +36,41 @@
         <label> <input class="ac-speed" type="radio" id="fast" name="air-conditioner-speed" value="fast" oninput="fastSpeed()" />Fast</label>
         <label> <input class="ac-speed" type="radio" id="faster" name="air-conditioner-speed" value="faster" oninput="fasterSpeed()" />Faster</label>
       </div>
-      <label for="volume">AC Rotor Volume</label>
-      <input type="range" id="fan" name="Rotor Volume" oninput="setRotorVolume(this.value)" min="-20" max="12" value="-6"
+      <div class="values">
+
+        <label for="volume">AC Rotor Volume</label>
+        <output class="ac-control" id="rotorVolumeValue" name="rotorVolumeValue">-6</output>
+      </div>
+      <input type="range" id="rotorVolume" name="Rotor Volume" oninput="setRotorVolume(this.value)" min="-20" max="12"
+        value="-6" step="0.5" />
+
+      <div class="values">
+        <label for="volume">AC Rotor Freq</label>
+        <output class="ac-control" id="rotorFreqValue" name="rotorFreqValue">22</output>
+      </div>
+      <input type="range" id="rotorFreq" name="Rotor Frequency" oninput="setRotorFrequency(this.value)" min="4" max="60"
+        value="22" step="0.5" />
+
+
+      <div class="values">
+
+        <label for="volume">AC Noise Volume</label>
+        <output class="ac-control" id="noiseVolumeValue" name="noiseVolumeValue">-8</output>
+      </div>
+      <input type="range" id="noiseVolume" name="Noise Volume" oninput="setNoiseVolume(this.value)" min="-30" max="12" value="-8"
         step="0.5" />
-      <label for="volume">AC Rotor Frequency</label>
-      <input type="range" id="fan freq" name="Rotor Frequency" oninput="setRotorFrequency(this.value)" min="4" max="60"
-        value="36" step="0.5" />
-      <label for="volume">AC Noise Volume</label>
-      <input type="range" id="noise" name="Noise Volume" oninput="setNoiseVolume(this.value)" min="-30" max="12" value="-8"
-        step="0.5" />
-      <label for="volume">Env Master Volume</label>
+      <div class="values">
+
+
+        <label for="volume">AC Volume</label>
+        <output class="ac-control-value" id="masterVolumeValue" name="masterVolumeValue">-9</output>
+      </div>
       <input type="range" id="master" name="Master Volume" oninput="setMasterVolume(this.value)" min="-60" max="12"
         value="-9" step="0.5" />
 
       <button onclick="log()">Logger</button>
     </fieldset>
   </div>
-
-  <a-scene>
-    <a-assets>
-
-      <!-- // MODELS -->
-      <a-asset-item id="comp-obj" src="./models/computer.obj"></a-asset-item>
-      <a-asset-item id="comp-mtl" src="./models/computer.mtl"></a-asset-item>
-      <a-asset-item id="chair-obj" src="./models/chair.obj"></a-asset-item>
-      <a-asset-item id="chair-mtl" src="./models/chair.mtl"></a-asset-item>
-      <a-asset-item id="ac-obj" src="./models/1286_Air Conditioner.obj"></a-asset-item>
-      <a-asset-item id="ac-mtl" src="./models/1286_Air Conditioner.mtl"></a-asset-item>
-      <a-asset-item id="button-obj" src="./models/button.obj"></a-asset-item>
-      <a-asset-item id="button-mtl" src="./models/button.mtl"></a-asset-item>
-
-      <audio id="computer-startup" src="./assets/audio/sfx/computer-startup.mp3"></audio>
-      <!-- <audio id="background" src="./assets/audio/ambience/room-tone.mp3"></audio> -->
-      <audio id="beep" src="./assets/audio/sfx/short_beep01.mp3"></audio>
-      <audio id="beep-loop" src="./assets/audio/sfx/beep_loop01.mp3"></audio>
-      <audio id="beep-loop2" src="./assets/audio/sfx/beep_loop02.mp3"></audio>
-      <audio id="beep2" src="./assets/audio/sfx/short_beep03.mp3"></audio>
-      <audio id="beep3" src="./assets/audio/sfx/short_beep07.mp3"></audio>
-      <audio id="dot-matrix" src="./assets/audio/sfx/dot_matrix.mp3"></audio>
-    </a-assets>
-
-    <a-entity obj-model="obj: #comp-obj; mtl: #comp-mtl" position="-5 0.1 -5" rotation="0 -90 0" scale="0.25 0.25 0.25">
-      <!-- Computer Startup -->
-      <a-box material="opacity: 0" scale="3.6 3.6 3.6" position="1.7 5.4 -17.4" sound="src: #computer-startup; volume: 0.8; on: click"></a-box>
-
-
-      <!-- Dot Matrix Printer -->
-      <a-box material="opacity:0" scale="4.7 4.3 4.2" position="8.8 3.03 -0.9" sound="src: #dot-matrix; volume: 0.6; on: click"></a-box>
-
-
-      <a-entity sound="src: #beep-loop; autoplay: false; loop: true; volume: 0.6" position="-12.363 5.37 -3.511"></a-entity>
-
-      <a-entity sound="src: #beep-loop2; autoplay: false; loop: true; volume: 0.6" position="-13.477 6 -8.97"></a-entity>
-
-    </a-entity>
-
-    <a-entity obj-model="obj: #ac-obj; mtl: #ac-mtl" position="-5.508842561829076 4 0.08716670674968241" rotation="0 0 0"
-      scale="0.010 0.010 0.010">
-
-    </a-entity>
-
-
-
-
-
-
-    <a-entity position="-5.973836116782467 4.736 0" scale="0.2 9.266 19.933481762131663" geometry="" material="color:#c0c0c0"></a-entity>
-
-
-
-    <a-entity position="1.9777552489843178 4.736 -9.828164300074144" scale="0.2 9.266 16.03923138312353" geometry=""
-      material="color:#c0c0c0" rotation="0 -89.71575906195868 0"></a-entity>
-
-
-
-
-    <a-entity position="8.864821961292703 4.736 0" scale="0.2 9.266 19.933481762131663" geometry="" material="color:#c0c0c0"></a-entity>
-
-
-
-    <a-entity position="1.9777552489843178 4.736 9.756461484894741" scale="0.2 9.266 16.03923138312353" geometry=""
-      material="color:#c0c0c0" rotation="0 -89.71575906195868 0"></a-entity>
-
-    <a-entity position="1.981 9.058 -0.85" scale="0.2 16.879 21.375" geometry="" material="" rotation="0 0 90.0745864681384"></a-entity>
-
-
-
-
-
-    <a-entity obj-model="obj: #chair-obj; mtl: #chair-mtl" position="-1.3 0.1 -2.425" rotation="-90 125 0" scale="1.5 1.5 1.5"></a-entity>
-
-
-    <a-entity obj-model="obj: #comp-obj; mtl: #comp-mtl" position="4 0.1 -8.3" rotation="0 180 0" scale="0.25 0.25 0.25"></a-entity>
-
-
-
-    <a-entity obj-model="obj:./models/computer.obj;mtl:./models/computer.mtl" position="-1.8417244594347402 0.1 8.22021011143604"
-      rotation="0 -0.7099712806305243 0" scale="0.25 0.25 0.25">
-      <!-- Computer Startup -->
-      <a-box material="opacity:0" scale="3.6 3.6 3.6" position="1.7 5.4 -17.4" sound="src:./assets/audio/sfx/computer-startup.mp3;volume:0.8;on:click"
-        geometry=""></a-box>
-
-
-      <!-- Dot Matrix Printer -->
-      <a-box material="opacity:0" scale="4.7 4.3 4.2" position="8.8 3.03 -0.9" sound="src:./assets/audio/sfx/dot_matrix.mp3;volume:0.6;on:click"
-        geometry=""></a-box>
-
-
-      <a-entity sound="src:./assets/audio/sfx/beep_loop01.mp3;loop:true;volume:0.6" position="-12.363 5.37 -3.511"></a-entity>
-
-      <a-entity sound="src:./assets/audio/sfx/beep_loop02.mp3;loop:true;volume:0.6" position="-13.477 6 -8.97"></a-entity>
-
-    </a-entity>
-
-    <a-entity obj-model="obj:./models/chair.obj;mtl:./models/chair.mtl" position="0.7230304060236878 0.1 3.9951800571139495"
-      rotation="-90 -88.9509083767739 0" scale="1.5 1.5 1.5"></a-entity>
-
-
-
-
-    <a-entity obj-model="obj:./models/computer.obj;mtl:./models/computer.mtl" position="7.145897418684974 0.0006892745081649443 4.957422616561636"
-      rotation="0 90 0" scale="0.25 0.25 0.25"></a-entity>
-
-
-
-
-
-    <a-text value="AC Controls" position="-5.873560935876424 2.346 0.736" rotation="0 90 0" text="value:AC Controls"></a-text>
-
-
-    <a-text value="AC Controls" position="-5.874 1.8993220935056265 0.9203513607906733" rotation="0 90 0" text="value:Slow"
-      scale="0.8 0.8 0.8"></a-text>
-
-    <a-entity obj-model="obj: #button-obj; mtl: #button-mtl" position="-5.811 1.57 0.7152497009124219" rotation="0 -90 0"
-      scale="0.5 0.5 0.5"></a-entity>
-
-
-    <a-text value="AC Controls" position="-5.874 1.8951543889247602 0.2876897589673948" rotation="0 90 0" text="value:Fast"
-      scale="0.8 0.8 0.8"></a-text>
-
-    <a-entity obj-model="obj: #button-obj; mtl: #button-mtl" position="-5.81 1.57 0.09132329321603955" rotation="0 -90 0"
-      scale="0.5 0.5 0.5"></a-entity>
-
-    <a-text value="AC Controls" position="-5.874 1.8865638430821243 -0.2553642622116944" rotation="0 90 0" text="value:Faster"
-      scale="0.8 0.8 0.8"></a-text>
-
-    <a-entity obj-model="obj: #button-obj; mtl: #button-mtl" position="-5.81 1.57 -0.5194310179208984" rotation="0 -90 0"
-      scale="0.5 0.5 0.5"></a-entity>
-
-
-
-
-    <!-- // Camera -->
-    <a-entity id="rig" movement-controls>
-      <a-entity camera position="0 1.8 0" look-controls="pointerLockEnabled: true">
-
-        <a-cursor></a-cursor>
-      </a-entity>
-    </a-entity>
-
-
-
-    <a-plane color="black" rotation="-90 0 0" position="0 0.1 0" width="20" height="20">
-
-    </a-plane>
-
-    <a-sky color="grey"></a-sky>
-
-  </a-scene>
-
-
 
 </body>
 

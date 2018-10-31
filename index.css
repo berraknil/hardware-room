@@ -39,3 +39,32 @@ html {
   /* display: flex;
   justify-content: space-between; */
 }
+
+output {
+
+  border: 2px solid black;
+  padding: .2rem .8rem;
+  margin: 0 auto;
+  /* text-align: center;
+  width: 35%; */
+  /* background: black;
+  color: white; */
+}
+
+.values {
+  /* outline: 1px solid black; */
+  display: flex;
+  align-items: center;
+  margin: .5rem 0;
+}
+
+.values output {
+  /* margin-left: auto; */
+  /* margin: initial initial initial auto; */
+  /* align-self: flex-end; */
+  margin: 0 0 0 auto;
+}
+
+input[type="range"] {
+  width: 100%;
+}

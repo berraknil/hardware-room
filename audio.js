@@ -4,7 +4,7 @@ const fan = new Tone.Synth({
   // volume: -3, // the oscillator volume set to -12dB
 
   oscillator: {
-    frequency: 36,
+    frequency: 22,
     type: 'triangle'
   },
   envelope: {
@@ -21,7 +21,7 @@ fan.chain(fanFader, Tone.Master)
 const noise = new Tone.Noise({
   type: 'pink',
   // volume: -22,
-  fadeIn: '+0.5'
+  fadeIn: '5'
 })
 
 // fan.connect(noise)
@@ -41,7 +41,7 @@ Tone.Master.volume.value = -9
 
 const start = () => {
   // fan.triggerAttack(24, '+0.5')
-  fan.triggerAttack(36, '+0.5', 0.5)
+  fan.triggerAttack(22, '+0.5', 0.5)
   noise.start()
 }
 
@@ -53,19 +53,24 @@ const stop = () => {
 const setRotorVolume = val => {
   // fan.volume.value = val
   fanFader.volume.value = val
-
+  rotorVolume.value = val
+  rotorVolumeValue.value = val
   console.log(fanFader.volume.value)
 }
 const setRotorFrequency = val => {
   // fan.volume.value = val
   fan.frequency.value = val
-
+  rotorFreq.value = val
+  rotorFreqValue.value = val
   console.log(fan.frequency.value)
 }
 
 const setNoiseVolume = val => {
   // fan.volume.value = val
   noiseFader.volume.value = val
+
+  noiseVolume.value = val
+  noiseVolumeValue.value = val
   console.log(noiseFader.volume.value)
 }
 const setMasterVolume = val => {
@@ -86,16 +91,25 @@ const setValues = (rotorVol, rotorFreq, noiseVol) => {
 }
 
 const slowSpeed = () => {
-  setValues(-9, 22, -12)
+  setValues(-9, 20, -12)
 }
 
 const fastSpeed = () => {
-  setValues(-3, 36, -6)
+  setValues(-3, 30, -6)
 }
 
 const fasterSpeed = () => {
-  setValues(3, 50, 0)
+  setValues(3, 40, 0)
 }
+
+// document.querySelectorAll('.ac-control').forEach(function(slider) {
+//   slider.addEventListener('input', function(e) {
+//     synth.envelope[e.target.id] = parseFloat(e.target.value)
+//     document.getElementById(`${e.target.id}Value`).value = parseFloat(
+//       e.target.value
+//     )
+//   })
+// })
 
 // document.querySelectorAll('.ac-speed').forEach(function(radio) {
 //   radio.addEventListener('input', function(e) {
