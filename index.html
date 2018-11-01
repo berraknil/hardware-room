@@ -18,17 +18,42 @@
 </head>
 
 <body>
-  <a-scene>
+  <a-scene light="defaultLightsEnabled: false">
     <a-assets>
 
       <audio id="computer-startup" src="./assets/audio/sfx/computer-startup.mp3"></audio>
       <a-asset-item id="kitchen" src="/assets/kitchen/model.gltf"></a-asset-item>
+      <a-asset-item id="coffeeMaker" src="/assets/coffee/nespresso_vertuo_plus.gltf"></a-asset-item>
+      <a-asset-item id="emptyMug" src="/assets/mug/Mug.gltf"></a-asset-item>
     </a-assets>
+    <a-entity light="type: ambient; color: #CCC"></a-entity>
 
-    <a-entity gltf-model="#kitchen" position="-3 0.5 -2" rotation="0 180 0 " sound="src: #computer-startup; volume: 0.8; on: click"></a-entity>
-    <a-entity position="0 1.6 0" camera wasd-controls look-controls="pointerLockEnabled: true">
-      <a-cursor></a-cursor>
+    <a-entity light="type: directional; color: #EEE; intensity: 0.5" position="-1 1 0"></a-entity>
+
+    <a-entity light="color:#EEE;intensity:0.5" position="3.229191539223738 3.3541291988271436 -0.26749126969791215"
+      rotation="0 -26.306374069799425 0"></a-entity>
+
+
+    <!-- <a-entity light="type: directional; color: #fff579; intensity: 0.6" position="-1 1.973928140958682 -2.714890534173049"></a-entity> -->
+    <a-entity gltf-model="#kitchen" position="-2.6584915526053963 0.5 -2.5147257577739883" rotation="0 141.7074210393981 0">
+      <a-entity gltf-model="#coffeeMaker" position="-1.9741190371781057 0.6600356100580915 1.1016315390774363" rotation="0 180 0"
+        scale="0.8 0.8 0.8"></a-entity>
+      <a-entity gltf-model="#emptyMug" position="-1.9668857822668444 0.7 0.923351880875954" rotation="0 55 0" scale="0.75 0.75 0.75"></a-entity>
     </a-entity>
+
+
+
+
+
+
+    <!-- Camera -->
+    <a-entity position="0 1.6 0" camera wasd-controls look-controls="pointerLockEnabled: true">
+      <a-cursor color="red"></a-cursor>
+    </a-entity>
+    <a-plane color="white" rotation="-90 0 0" position="0 0.8 0" width="10" height="10">
+
+    </a-plane>
+
 
 
 
@@ -41,3 +66,11 @@
 
 
 </html>
+
+
+
+
+
+
+
+<!-- sound="src: #computer-startup; volume: 0.8; on: click -->
