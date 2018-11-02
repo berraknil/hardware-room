@@ -7,13 +7,13 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Test View</title>
   <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
-  <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
 
 
   <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.0.2/dist/aframe-extras.min.js"></script>
   <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
   <script src="https://unpkg.com/aframe-aabb-collider-component@^2.2.1/dist/aframe-aabb-collider-component.min.js"></script>
-  <script src="./audio.js"></script>
+  <!-- <script src="./audio.js"></script> -->
 
 </head>
 
@@ -21,7 +21,10 @@
   <a-scene light="defaultLightsEnabled: false">
     <a-assets>
 
-      <audio id="computer-startup" src="./assets/audio/sfx/computer-startup.mp3"></audio>
+      <!-- <audio id="computer-startup" src="./assets/audio/sfx/computer-startup.mp3"></audio> -->
+      <audio id="espressoMachine" src="./assets/audio/espressoMachine.wav"></audio>
+      <audio id="toaster" src="./assets/audio/toaster.wav"></audio>
+      <audio id="bottle" src="./assets/audio/bottle.wav"></audio>
       <a-asset-item id="kitchen" src="/assets/kitchen/model.gltf"></a-asset-item>
       <a-asset-item id="coffeeMaker" src="/assets/coffee/nespresso_vertuo_plus.gltf"></a-asset-item>
       <a-asset-item id="emptyMug" src="/assets/mug/Mug.gltf"></a-asset-item>
@@ -37,18 +40,40 @@
     <!-- <a-entity light="type: directional; color: #fff579; intensity: 0.6" position="-1 1.973928140958682 -2.714890534173049"></a-entity> -->
     <a-entity gltf-model="#kitchen" position="-2.6584915526053963 0.5 -2.5147257577739883" rotation="0 141.7074210393981 0">
       <a-entity gltf-model="#coffeeMaker" position="-1.9741190371781057 0.6600356100580915 1.1016315390774363" rotation="0 180 0"
-        scale="0.8 0.8 0.8"></a-entity>
+        scale="0.8 0.8 0.8" sound="src: #espressoMachine; volume: 1; on: click"></a-entity>
       <a-entity gltf-model="#emptyMug" position="-1.9668857822668444 0.7 0.923351880875954" rotation="0 55 0" scale="0.75 0.75 0.75"></a-entity>
     </a-entity>
 
+    <a-box material="opacity:0"  position=".234 1.2 -2.19" rotation="0 -38 0" scale="0.10 0.17 0.18"  sound="src: #toaster; volume: 1; on: click"></a-box>
 
 
+    <a-cylinder material="opacity:0"   position="0.7866426290945593 1.2718067565677917 -1.7998760039006376" rotation="0 -38 0" scale="0.03223308387361275 0.2221710696942749 -0.03543913491067545" sound="src: #bottle; volume: 1; on: click"></a-cylinder>
 
-
+<!-- 
+    <a-cylinder material="color:#00ff00" position="0.7866426290945593 1.2718067565677917 -1.7998760039006376" rotation="0 -38 0" scale="0.03223308387361275 0.2221710696942749 -0.03543913491067545" sound="src:./assets/audio/bottle.wav;on:click" geometry=""></a-cylinder> -->
 
     <!-- Camera -->
-    <a-entity position="0 1.6 0" camera wasd-controls look-controls="pointerLockEnabled: true">
-      <a-cursor color="red"></a-cursor>
+    <a-entity position="0 1.5 0" camera wasd-controls look-controls="pointerLockEnabled: true">
+      <!-- <a-cursor color="red" rayOrigin="mouse"></a-cursor> -->
+
+
+      <a-entity cursor
+      raycaster="far: .5"
+      position="0 0 -0.3"
+      geometry="primitive: ring; radiusInner: 0.003; radiusOuter: 0.005"
+      material="color: #EE6C15">
+      <!-- material="color: #B61119"> -->
+      <!-- material="color: red; shader: flat"> -->
+</a-entity>
+
+
+
+
+
+
+      <!-- <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -.5" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+        material="color: black; shader: flat">
+      </a-entity> -->
     </a-entity>
     <a-plane color="white" rotation="-90 0 0" position="0 0.8 0" width="10" height="10">
 
