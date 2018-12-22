@@ -83,7 +83,9 @@
       </fieldset>
     </div>
 
-    <a-scene>
+    <!-- <a-scene> -->
+    <a-scene
+      inspector="https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js">
       <!-- <a-scene sound="src: url(./assets/audio/ambience/room-tone.mp3); loop:true; autoplay:true; volume:0.5; positional: false"> -->
       <a-assets>
 
@@ -94,6 +96,8 @@
         <a-asset-item id="chair-mtl" src="./models/chair.mtl"></a-asset-item>
         <a-asset-item id="wall-obj" src="./models/wall_01.obj"></a-asset-item>
         <a-asset-item id="wall-mtl" src="./models/wall_01.mtl"></a-asset-item>
+        <a-asset-item id="ac-obj" src="./models/1286_Air Conditioner.obj"></a-asset-item>
+        <a-asset-item id="ac-mtl" src="./models/1286_Air Conditioner.mtl"></a-asset-item>
         <!-- <video id="processing" autoplay loop="true" src="./assets/processing.mp4"></video> -->
         <!-- // AUDIO FILES -->
         <audio id="computer-startup"
@@ -134,15 +138,29 @@
       </a-entity>
 
 
+      <a-entity obj-model="obj: #ac-obj; mtl: #ac-mtl"
+        position="-5.508842561829076 4 0.08716670674968241" rotation="0 0 0"
+        scale="0.010 0.010 0.010">
 
-      <a-entity id="rig" movement-controls>
+      </a-entity>
+
+      <!-- <a-entity id="rig" movement-controls>
         <a-entity camera position="0 1.8 0" look-controls="pointerLockEnabled:
           true">
 
           <a-cursor></a-cursor>
         </a-entity>
-      </a-entity>
+      </a-entity> -->
+      <!-- Camera -->
+      <a-entity position="0 1.8 0" camera wasd-controls look-controls="pointerLockEnabled: true"></a-entity>">
 
+
+        <!-- Cursor -->
+        <a-entity cursor raycaster="far: .5" geometry="primitive: ring;
+          radiusInner: 0.003; radiusOuter: 0.005"
+          material="color: #EE6C15">
+        </a-entity>
+      </a-entity>
 
 
       <a-plane color="black" rotation="-90 0 0" position="0 0.1 0" width="20"

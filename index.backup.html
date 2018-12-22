@@ -1,136 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Hardware Room</title>
-  <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
-  <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
-  <!-- <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script> -->
-  <script src="https://tonejs.github.io/build/Tone.min.js"></script>
-  <!-- <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.1.1/dist/aframe-physics-system.min.js"></script> -->
-  <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.0.2/dist/aframe-extras.min.js"></script>
-  <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hardware Room</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <!-- <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script> -->
+    <script src="https://tonejs.github.io/build/Tone.min.js"></script>
+    <!-- <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.1.1/dist/aframe-physics-system.min.js"></script> -->
+    <script
+      src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.0.2/dist/aframe-extras.min.js"></script>
+    <script
+      src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+    <!-- <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script> -->
+  </head>
 
-  <!-- <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script> -->
-
-</head>
-
-<body>
-
-
-  <a-scene>
-    <!-- <a-scene sound="src: url(./assets/audio/ambience/room-tone.mp3); loop:true; autoplay:true; volume:0.5; positional: false"> -->
-    <a-assets>
-
-      <!-- // MODELS -->
-      <a-asset-item id="comp-obj" src="./models/computer.obj"></a-asset-item>
-      <a-asset-item id="comp-mtl" src="./models/computer.mtl"></a-asset-item>
-      <a-asset-item id="chair-obj" src="./models/chair.obj"></a-asset-item>
-      <a-asset-item id="chair-mtl" src="./models/chair.mtl"></a-asset-item>
-      <a-asset-item id="wall-obj" src="./models/wall_01.obj"></a-asset-item>
-      <a-asset-item id="wall-mtl" src="./models/wall_01.mtl"></a-asset-item>
-
-      <!-- <video id="processing" autoplay loop="true" src="./assets/processing.mp4"></video> -->
+  <body>
 
 
-      <!-- // AUDIO FILES -->
-      <audio id="computer-startup" src="./assets/audio/sfx/computer-startup.mp3"></audio>
-      <!-- <audio id="background" src="./assets/audio/ambience/room-tone.mp3"></audio> -->
-      <audio id="beep" src="./assets/audio/sfx/short_beep01.mp3"></audio>
-      <audio id="beep-loop" src="./assets/audio/sfx/beep_loop01.mp3"></audio>
-      <audio id="beep-loop2" src="./assets/audio/sfx/beep_loop02.mp3"></audio>
-      <audio id="beep2" src="./assets/audio/sfx/short_beep03.mp3"></audio>
-      <audio id="beep3" src="./assets/audio/sfx/short_beep07.mp3"></audio>
-      <audio id="dot-matrix" src="./assets/audio/sfx/dot_matrix.mp3"></audio>
+    <a-scene>
+      <!-- <a-scene sound="src: url(./assets/audio/ambience/room-tone.mp3); loop:true; autoplay:true; volume:0.5; positional: false"> -->
+      <a-assets>
+
+        <!-- // MODELS -->
+        <a-asset-item id="comp-obj" src="./models/computer.obj"></a-asset-item>
+        <a-asset-item id="comp-mtl" src="./models/computer.mtl"></a-asset-item>
+        <a-asset-item id="chair-obj" src="./models/chair.obj"></a-asset-item>
+        <a-asset-item id="chair-mtl" src="./models/chair.mtl"></a-asset-item>
+        <a-asset-item id="wall-obj" src="./models/wall_01.obj"></a-asset-item>
+        <a-asset-item id="wall-mtl" src="./models/wall_01.mtl"></a-asset-item>
+        <!-- <video id="processing" autoplay loop="true" src="./assets/processing.mp4"></video> -->
+        <!-- // AUDIO FILES -->
+        <audio id="computer-startup"
+          src="./assets/audio/sfx/computer-startup.mp3"></audio>
+        <!-- <audio id="background" src="./assets/audio/ambience/room-tone.mp3"></audio> -->
+        <audio id="beep" src="./assets/audio/sfx/short_beep01.mp3"></audio>
+        <audio id="beep-loop" src="./assets/audio/sfx/beep_loop01.mp3"></audio>
+        <audio id="beep-loop2" src="./assets/audio/sfx/beep_loop02.mp3"></audio>
+        <audio id="beep2" src="./assets/audio/sfx/short_beep03.mp3"></audio>
+        <audio id="beep3" src="./assets/audio/sfx/short_beep07.mp3"></audio>
+        <audio id="dot-matrix" src="./assets/audio/sfx/dot_matrix.mp3"></audio>
+      </a-assets>
+
+      <a-entity>
+        <a-entity obj-model="obj: #comp-obj; mtl: #comp-mtl" position="-5 0.1
+          -5" rotation="0 -90 0" scale="0.25 0.25 0.25">
+          <!-- Computer Startup -->
+          <a-box material="opacity: 0" scale="3.6 3.6 3.6" position="1.7 5.4
+            -17.4" sound="src: #computer-startup; volume: 0.8; on: click"></a-box>
+          <!-- Dot Matrix Printer -->
+          <a-box material="opacity:0" scale="4.7 4.3 4.2" position="8.8 3.03
+            -0.9" sound="src: #dot-matrix; volume: 0.6; on: click"></a-box>
 
 
+          <!-- BEEPS -->
+          <!-- <a-entity sound="src: #beep-loop; autoplay: true; loop: true; volume: 0.3" position="-5.2 5.37 0.4"></a-entity> -->
+          <a-entity sound="src: #beep-loop; loop: true; volume: 0.6"
+            position="-12.363 5.37 -3.511"></a-entity>
+          <!-- <a-entity sound="src: #beep-loop2; autoplay: true; loop: true; volume: 0.3" position="-10 6 0.8"></a-entity> -->
+          <a-entity sound="src: #beep-loop2; loop: true; volume: 0.6"
+            position="-13.477 6 -8.97"></a-entity>
 
-    </a-assets>
-
-    <a-entity>
-      <a-entity obj-model="obj: #comp-obj; mtl: #comp-mtl" position="-5 0.1 -5" rotation="0 -90 0" scale="0.25 0.25 0.25">
-        <!-- Computer Startup -->
-        <a-box material="opacity: 0" scale="3.6 3.6 3.6" position="1.7 5.4 -17.4" sound="src: #computer-startup; volume: 0.8; on: click"></a-box>
-
-
-        <!-- Dot Matrix Printer -->
-        <a-box material="opacity:0" scale="4.7 4.3 4.2" position="8.8 3.03 -0.9" sound="src: #dot-matrix; volume: 0.6; on: click"></a-box>
-
-
-        <!-- BEEPS -->
-        <!-- <a-entity sound="src: #beep-loop; autoplay: true; loop: true; volume: 0.3" position="-5.2 5.37 0.4"></a-entity> -->
-        <a-entity sound="src: #beep-loop; autoplay: true; loop: true; volume: 0.6" position="-12.363 5.37 -3.511"></a-entity>
-        <!-- <a-entity sound="src: #beep-loop2; autoplay: true; loop: true; volume: 0.3" position="-10 6 0.8"></a-entity> -->
-        <a-entity sound="src: #beep-loop2; autoplay: true; loop: true; volume: 0.6" position="-13.477 6 -8.97"></a-entity>
-
-      </a-entity>
+        </a-entity>
 
 
 
-      <!--     <a-sound src="src: #beep" autoplay="true" position="0 2 5" loop="true"></a-sound>
+        <!--     <a-sound src="src: #beep" autoplay="true" position="0 2 5" loop="true"></a-sound>
       <a-sound src="src: #beep2" autoplay="true" position="5 2 5" loop="true"></a-sound>
       <a-sound src="src: #beep3" autoplay="true" position="-5 2 5" loop="true"></a-sound> -->
-
-      <!-- BACKGROUND AMBIENCE -->
-      <!-- <a-entity id="ambience" sound="src: #background; loop: true; volume:0.5; positional: false"></a-entity> -->
-      <!-- <a-sound src="#background" autoplay="true" positional="false" loop="true" volume="0.4"></a-sound> -->
-
-
-      <a-entity obj-model="obj: #chair-obj; mtl: #chair-mtl" position="-1.3 0.1 -2.425" rotation="-90 125 0" scale="1.5 1.5 1.5"></a-entity>
-
-      <a-entity obj-model="obj: #comp-obj; mtl: #comp-mtl" position="4 0.1 -8.3" rotation="0 180 0" scale="0.25 0.25 0.25"></a-entity>
-      <!-- <a-entity obj-model="obj: #chair-obj; mtl: #chair-mtl" position="2.65 0.1 -3.32" rotation="-90 90 0" scale="1.5 1.5 1.5"></a-entity> -->
-    </a-entity>
-
-    <a-entity position="2.343 0 -1.369" rotation="0 180.023 0">
-      <a-entity obj-model="obj: #comp-obj; mtl: #comp-mtl" position="-5 0.1 -5" rotation="0 -90 0" scale="0.25 0.25 0.25">
-        <a-box material="opacity: 0" scale="3.610236550964652 3.610236550964652 3.610236550964652" position="1.7722584007818938 5.458216786045342 -17.48730782945859"
-          sound="src: #computer-startup; volume: 0.5; on: click"></a-box>
-
+        <!-- BACKGROUND AMBIENCE -->
+        <!-- <a-entity id="ambience" sound="src: #background; loop: true; volume:0.5; positional: false"></a-entity> -->
+        <!-- <a-sound src="#background" autoplay="true" positional="false" loop="true" volume="0.4"></a-sound> -->
+        <a-entity obj-model="obj: #chair-obj; mtl: #chair-mtl" position="-1.3
+          0.1 -2.425" rotation="-90 125 0" scale="1.5 1.5 1.5"></a-entity>
+        <a-entity obj-model="obj: #comp-obj; mtl: #comp-mtl" position="4 0.1
+          -8.3" rotation="0 180 0" scale="0.25 0.25 0.25"></a-entity>
+        <!-- <a-entity obj-model="obj: #chair-obj; mtl: #chair-mtl" position="2.65 0.1 -3.32" rotation="-90 90 0" scale="1.5 1.5 1.5"></a-entity> -->
       </a-entity>
-      <a-entity obj-model="obj: #comp-obj; mtl: #comp-mtl" position="4 0.1 -8.3" rotation="0 180 0" scale="0.25 0.25 0.25"></a-entity>
-      <a-entity obj-model="obj: #chair-obj; mtl: #chair-mtl" position="-1.3 0.1 -2.425" rotation="-90 125 0" scale="1.5 1.5 1.5"></a-entity>
-      <a-entity obj-model="obj: #chair-obj; mtl: #chair-mtl" position="2.65 0.1 -3.32" rotation="-90 90 0" scale="1.5 1.5 1.5"></a-entity>
-    </a-entity>
 
-
-    <a-entity id="rig" movement-controls>
-      <a-entity camera position="0 1.8 0" look-controls="pointerLockEnabled: true">
-        <!-- <a-sound src="#background" autoplay="true" position="0 0 0" loop="true" volume="0.05"></a-sound> -->
-        <a-cursor></a-cursor>
-        <!--   <a-entity cursor="fuse: true;"
-        position="0 0 -3"
-        geometry="primitive: ring"
-        material="color: black; shader: flat">
-<a-animation begin="click" easing="ease-in" attribute="scale" dur="150"
-             fill="forwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
-<a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1500"
-             fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
-</a-entity> -->
+      <a-entity position="2.343 0 -1.369" rotation="0 180.023 0">
+        <a-entity obj-model="obj: #comp-obj; mtl: #comp-mtl" position="-5 0.1
+          -5" rotation="0 -90 0" scale="0.25 0.25 0.25">
+          <a-box material="opacity: 0" scale="3.610236550964652
+            3.610236550964652 3.610236550964652" position="1.7722584007818938
+            5.458216786045342 -17.48730782945859"
+            sound="src: #computer-startup; volume: 0.5; on: click"></a-box>
+        </a-entity>
+        <a-entity obj-model="obj: #comp-obj; mtl: #comp-mtl" position="4 0.1
+          -8.3" rotation="0 180 0" scale="0.25 0.25 0.25"></a-entity>
+        <a-entity obj-model="obj: #chair-obj; mtl: #chair-mtl" position="-1.3
+          0.1 -2.425" rotation="-90 125 0" scale="1.5 1.5 1.5"></a-entity>
+        <a-entity obj-model="obj: #chair-obj; mtl: #chair-mtl" position="2.65
+          0.1 -3.32" rotation="-90 90 0" scale="1.5 1.5 1.5"></a-entity>
       </a-entity>
-    </a-entity>
+
+
+      <a-entity id="rig" movement-controls>
+        <a-entity camera position="0 1.8 0" look-controls="pointerLockEnabled:
+          true">
+
+          <a-cursor></a-cursor>
+        </a-entity>
+      </a-entity>
 
 
 
-    <a-plane color="black" rotation="-90 0 0" position="0 0.1 0" width="20" height="20">
+      <a-plane color="black" rotation="-90 0 0" position="0 0.1 0" width="20"
+        height="20">
 
-    </a-plane>
-    <!-- <a-video src="#processing" width="16" height="9" position="0 0 -20"></a-video> -->
-    <!--    <a-video src="#processing" width="16" height="9" position="-0.711 1.668 -3.339" scale="0.02 0.03 0.01"></a-video> -->
-    <!-- 
+      </a-plane>
+      <!-- <a-video src="#processing" width="16" height="9" position="0 0 -20"></a-video> -->
+      <!--    <a-video src="#processing" width="16" height="9" position="-0.711 1.668 -3.339" scale="0.02 0.03 0.01"></a-video> -->
+      <!-- 
     <a-video src="#processing" width="16" height="9" position="-0.524 1.552 -4.091"></a-video> -->
-
-    <!--    <a-entity geometry="primitive: box" material="color: orange" position="0 6.5 -7" animation__fadein="property: material.opacity; dur: 100;
+      <!--    <a-entity geometry="primitive: box" material="color: orange" position="0 6.5 -7" animation__fadein="property: material.opacity; dur: 100;
                         easing: linear; from 0; to: 1; startEvents: fadein" animation__fadeout="property: material.opacity; dur: 100;
                         easing: linear; from 1; to: 0; startEvents: fadeout"></a-entity> -->
+      <a-sky color="grey"></a-sky>
 
-    <a-sky color="grey"></a-sky>
-
-    <!-- WALLS -->
-    <!--     <a-entity>
+      <!-- WALLS -->
+      <!--     <a-entity>
       <a-entity obj-model="obj: #wall-obj; mtl: #wall-mtl" position="-3.75 0.023 -9.953" rotation="270 0 0" scale="0.01 0.01 0.01"></a-entity>
       <a-entity obj-model="obj: #wall-obj; mtl: #wall-mtl" position="-1.553 0.023 -9.953" rotation="270 0 0" scale="0.01 0.01 0.01"></a-entity>
       <a-entity obj-model="obj: #wall-obj; mtl: #wall-mtl" position="0.685 0.023 -9.953" rotation="270 0 0" scale="0.01 0.01 0.01"></a-entity>
@@ -141,8 +133,7 @@
       <a-entity obj-model="obj: #wall-obj; mtl: #wall-mtl" position="11.827 0.023 -9.953" rotation="270 0 0" scale="0.01 0.01 0.01"></a-entity>
       <a-entity obj-model="obj: #wall-obj; mtl: #wall-mtl" position="13.966 0.023 -9.953" rotation="270 0 0" scale="0.01 0.01 0.01"></a-entity>
     </a-entity> -->
-
-    <!-- 
+      <!-- 
     <rw-room position="-2 0 -2" material="color:#866">
       <rw-wall position="4 0 0"></rw-wall>
       <rw-wall position="4 0 4"></rw-wall>
@@ -160,9 +151,9 @@
       <rw-wall position="-1 0  1" material="color:#878"></rw-wall>
       <rw-wall position="-1 0 -1" material="color:#778"></rw-wall>
     </rw-room> -->
-  </a-scene>
+    </a-scene>
 
-  <script>
+    <!-- <script>
     const fan = new Tone.Synth({
       volume: -15, // the oscillator volume set to -12dB
       oscillator: {
@@ -196,10 +187,8 @@
     noise.start()
 
 
-  </script>
-
-
-  <script>
+  </script> -->
+    <script>
 
 
 
@@ -220,7 +209,7 @@
 
 
   </script>
-</body>
+  </body>
 
 
 </html>
@@ -262,7 +251,6 @@
     <a-asset-item id="ac-mtl" src="./models/1286_Air Conditioner.mtl"></a-asset-item>
     <a-asset-item id="button-obj" src="./models/button.obj"></a-asset-item>
     <a-asset-item id="button-mtl" src="./models/button.mtl"></a-asset-item>
-
     <audio id="computer-startup" src="./assets/audio/sfx/computer-startup.mp3"></audio>
     <!-- <audio id="background" src="./assets/audio/ambience/room-tone.mp3"></audio> -->
     <audio id="beep" src="./assets/audio/sfx/short_beep01.mp3"></audio>
@@ -273,22 +261,28 @@
     <audio id="dot-matrix" src="./assets/audio/sfx/dot_matrix.mp3"></audio>
   </a-assets>
 
-  <a-entity obj-model="obj: #comp-obj; mtl: #comp-mtl" position="-5 0.1 -5" rotation="0 -90 0" scale="0.25 0.25 0.25">
+  <a-entity obj-model="obj: #comp-obj; mtl: #comp-mtl" position="-5 0.1 -5"
+    rotation="0 -90 0" scale="0.25 0.25 0.25">
     <!-- Computer Startup -->
-    <a-box material="opacity: 0" scale="3.6 3.6 3.6" position="1.7 5.4 -17.4" sound="src: #computer-startup; volume: 0.8; on: click"></a-box>
+    <a-box material="opacity: 0" scale="3.6 3.6 3.6" position="1.7 5.4 -17.4"
+      sound="src: #computer-startup; volume: 0.8; on: click"></a-box>
 
 
     <!-- Dot Matrix Printer -->
-    <a-box material="opacity:0" scale="4.7 4.3 4.2" position="8.8 3.03 -0.9" sound="src: #dot-matrix; volume: 0.6; on: click"></a-box>
+    <a-box material="opacity:0" scale="4.7 4.3 4.2" position="8.8 3.03 -0.9"
+      sound="src: #dot-matrix; volume: 0.6; on: click"></a-box>
 
 
-    <a-entity sound="src: #beep-loop; autoplay: false; loop: true; volume: 0.6" position="-12.363 5.37 -3.511"></a-entity>
+    <a-entity sound="src: #beep-loop; autoplay: false; loop: true; volume: 0.6"
+      position="-12.363 5.37 -3.511"></a-entity>
 
-    <a-entity sound="src: #beep-loop2; autoplay: false; loop: true; volume: 0.6" position="-13.477 6 -8.97"></a-entity>
+    <a-entity sound="src: #beep-loop2; autoplay: false; loop: true; volume: 0.6"
+      position="-13.477 6 -8.97"></a-entity>
 
   </a-entity>
 
-  <a-entity obj-model="obj: #ac-obj; mtl: #ac-mtl" position="-5.508842561829076 4 0.08716670674968241" rotation="0 0 0"
+  <a-entity obj-model="obj: #ac-obj; mtl: #ac-mtl" position="-5.508842561829076
+    4 0.08716670674968241" rotation="0 0 0"
     scale="0.010 0.010 0.010">
 
   </a-entity>
@@ -298,96 +292,108 @@
 
 
 
-  <a-entity position="-5.973836116782467 4.736 0" scale="0.2 9.266 19.933481762131663" geometry="" material="color:#c0c0c0"></a-entity>
-
-
-
-  <a-entity position="1.9777552489843178 4.736 -9.828164300074144" scale="0.2 9.266 16.03923138312353" geometry=""
+  <a-entity position="-5.973836116782467 4.736 0" scale="0.2 9.266
+    19.933481762131663" geometry="" material="color:#c0c0c0"></a-entity>
+  <a-entity position="1.9777552489843178 4.736 -9.828164300074144" scale="0.2
+    9.266 16.03923138312353" geometry=""
     material="color:#c0c0c0" rotation="0 -89.71575906195868 0"></a-entity>
-
-
-
-
-  <a-entity position="8.864821961292703 4.736 0" scale="0.2 9.266 19.933481762131663" geometry="" material="color:#c0c0c0"></a-entity>
-
-
-
-  <a-entity position="1.9777552489843178 4.736 9.756461484894741" scale="0.2 9.266 16.03923138312353" geometry=""
+  <a-entity position="8.864821961292703 4.736 0" scale="0.2 9.266
+    19.933481762131663" geometry="" material="color:#c0c0c0"></a-entity>
+  <a-entity position="1.9777552489843178 4.736 9.756461484894741" scale="0.2
+    9.266 16.03923138312353" geometry=""
     material="color:#c0c0c0" rotation="0 -89.71575906195868 0"></a-entity>
-
-  <a-entity position="1.981 9.058 -0.85" scale="0.2 16.879 21.375" geometry="" material="" rotation="0 0 90.0745864681384"></a-entity>
-
-
+  <a-entity position="1.981 9.058 -0.85" scale="0.2 16.879 21.375" geometry=""
+    material="" rotation="0 0 90.0745864681384"></a-entity>
 
 
 
-  <a-entity obj-model="obj: #chair-obj; mtl: #chair-mtl" position="-1.3 0.1 -2.425" rotation="-90 125 0" scale="1.5 1.5 1.5"></a-entity>
 
 
-  <a-entity obj-model="obj: #comp-obj; mtl: #comp-mtl" position="4 0.1 -8.3" rotation="0 180 0" scale="0.25 0.25 0.25"></a-entity>
+  <a-entity obj-model="obj: #chair-obj; mtl: #chair-mtl" position="-1.3 0.1
+    -2.425" rotation="-90 125 0" scale="1.5 1.5 1.5"></a-entity>
+
+
+  <a-entity obj-model="obj: #comp-obj; mtl: #comp-mtl" position="4 0.1 -8.3"
+    rotation="0 180 0" scale="0.25 0.25 0.25"></a-entity>
 
 
 
-  <a-entity obj-model="obj:./models/computer.obj;mtl:./models/computer.mtl" position="-1.8417244594347402 0.1 8.22021011143604"
+  <a-entity obj-model="obj:./models/computer.obj;mtl:./models/computer.mtl"
+    position="-1.8417244594347402 0.1 8.22021011143604"
     rotation="0 -0.7099712806305243 0" scale="0.25 0.25 0.25">
     <!-- Computer Startup -->
-    <a-box material="opacity:0" scale="3.6 3.6 3.6" position="1.7 5.4 -17.4" sound="src:./assets/audio/sfx/computer-startup.mp3;volume:0.8;on:click"
+    <a-box material="opacity:0" scale="3.6 3.6 3.6" position="1.7 5.4 -17.4"
+      sound="src:./assets/audio/sfx/computer-startup.mp3;volume:0.8;on:click"
       geometry=""></a-box>
 
 
     <!-- Dot Matrix Printer -->
-    <a-box material="opacity:0" scale="4.7 4.3 4.2" position="8.8 3.03 -0.9" sound="src:./assets/audio/sfx/dot_matrix.mp3;volume:0.6;on:click"
+    <a-box material="opacity:0" scale="4.7 4.3 4.2" position="8.8 3.03 -0.9"
+      sound="src:./assets/audio/sfx/dot_matrix.mp3;volume:0.6;on:click"
       geometry=""></a-box>
 
 
-    <a-entity sound="src:./assets/audio/sfx/beep_loop01.mp3;loop:true;volume:0.6" position="-12.363 5.37 -3.511"></a-entity>
+    <a-entity
+      sound="src:./assets/audio/sfx/beep_loop01.mp3;loop:true;volume:0.6"
+      position="-12.363 5.37 -3.511"></a-entity>
 
-    <a-entity sound="src:./assets/audio/sfx/beep_loop02.mp3;loop:true;volume:0.6" position="-13.477 6 -8.97"></a-entity>
+    <a-entity
+      sound="src:./assets/audio/sfx/beep_loop02.mp3;loop:true;volume:0.6"
+      position="-13.477 6 -8.97"></a-entity>
 
   </a-entity>
 
-  <a-entity obj-model="obj:./models/chair.obj;mtl:./models/chair.mtl" position="0.7230304060236878 0.1 3.9951800571139495"
+  <a-entity obj-model="obj:./models/chair.obj;mtl:./models/chair.mtl"
+    position="0.7230304060236878 0.1 3.9951800571139495"
     rotation="-90 -88.9509083767739 0" scale="1.5 1.5 1.5"></a-entity>
 
 
 
 
-  <a-entity obj-model="obj:./models/computer.obj;mtl:./models/computer.mtl" position="7.145897418684974 0.0006892745081649443 4.957422616561636"
+  <a-entity obj-model="obj:./models/computer.obj;mtl:./models/computer.mtl"
+    position="7.145897418684974 0.0006892745081649443 4.957422616561636"
     rotation="0 90 0" scale="0.25 0.25 0.25"></a-entity>
 
 
 
 
 
-  <a-text value="AC Controls" position="-5.873560935876424 2.346 0.736" rotation="0 90 0" text="value:AC Controls"></a-text>
+  <a-text value="AC Controls" position="-5.873560935876424 2.346 0.736"
+    rotation="0 90 0" text="value:AC Controls"></a-text>
 
 
-  <a-text value="AC Controls" position="-5.874 1.8993220935056265 0.9203513607906733" rotation="0 90 0" text="value:Slow"
+  <a-text value="AC Controls" position="-5.874 1.8993220935056265
+    0.9203513607906733" rotation="0 90 0" text="value:Slow"
     scale="0.8 0.8 0.8"></a-text>
 
-  <a-entity obj-model="obj: #button-obj; mtl: #button-mtl" position="-5.811 1.57 0.7152497009124219" rotation="0 -90 0"
+  <a-entity obj-model="obj: #button-obj; mtl: #button-mtl" position="-5.811 1.57
+    0.7152497009124219" rotation="0 -90 0"
     scale="0.5 0.5 0.5"></a-entity>
 
 
-  <a-text value="AC Controls" position="-5.874 1.8951543889247602 0.2876897589673948" rotation="0 90 0" text="value:Fast"
+  <a-text value="AC Controls" position="-5.874 1.8951543889247602
+    0.2876897589673948" rotation="0 90 0" text="value:Fast"
     scale="0.8 0.8 0.8"></a-text>
 
-  <a-entity obj-model="obj: #button-obj; mtl: #button-mtl" position="-5.81 1.57 0.09132329321603955" rotation="0 -90 0"
+  <a-entity obj-model="obj: #button-obj; mtl: #button-mtl" position="-5.81 1.57
+    0.09132329321603955" rotation="0 -90 0"
     scale="0.5 0.5 0.5"></a-entity>
 
-  <a-text value="AC Controls" position="-5.874 1.8865638430821243 -0.2553642622116944" rotation="0 90 0" text="value:Faster"
+  <a-text value="AC Controls" position="-5.874 1.8865638430821243
+    -0.2553642622116944" rotation="0 90 0" text="value:Faster"
     scale="0.8 0.8 0.8"></a-text>
 
-  <a-entity obj-model="obj: #button-obj; mtl: #button-mtl" position="-5.81 1.57 -0.5194310179208984" rotation="0 -90 0"
+  <a-entity obj-model="obj: #button-obj; mtl: #button-mtl" position="-5.81 1.57
+    -0.5194310179208984" rotation="0 -90 0"
     scale="0.5 0.5 0.5"></a-entity>
 
 
 
   <a-entity glow="side: back; scale: 1.3; color: #FF00FF; c: 0.3; p: 3;"></a-entity>
-
   <!-- // Camera -->
   <a-entity id="rig" movement-controls>
-    <a-entity camera position="0 1.8 0" look-controls="pointerLockEnabled: true">
+    <a-entity camera position="0 1.8 0" look-controls="pointerLockEnabled:
+      true">
 
       <a-cursor></a-cursor>
     </a-entity>
@@ -395,7 +401,8 @@
 
 
 
-  <a-plane color="black" rotation="-90 0 0" position="0 0.1 0" width="20" height="20">
+  <a-plane color="black" rotation="-90 0 0" position="0 0.1 0" width="20"
+    height="20">
 
   </a-plane>
 
