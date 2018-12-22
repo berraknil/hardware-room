@@ -144,6 +144,24 @@
 
       </a-entity>
 
+      <!-- WALLS -->
+      <!-- LEFT -->
+      <a-entity position="-5.92206 4.45287 -0.02602" rotation="0 90 0"
+        scale="17.79488 8.5521 2.80737" geometry="primitive:plane" material=""></a-entity>
+      <!-- RIGHT -->
+      <a-entity position="7.76457 4.45287 -0.02602" rotation="0 -90 0"
+        scale="17.79488 8.5521 2.80737" geometry="primitive:plane" material=""></a-entity>
+      <!-- BACK -->
+      <a-entity position="0.72316 4.45287 8.7612" rotation="0 180 0"
+        scale="17.79488 8.5521 2.80737" geometry="primitive:plane" material=""></a-entity>
+      <!-- FRONT -->
+      <a-entity position="0.72316 4.45287 -9.05972" scale="17.79488 8.5521
+        2.80737" geometry="primitive:plane" material=""></a-entity>
+
+      <!-- CEILING -->
+      <a-entity position="0.72316 8.68093 -0.17239" scale="18.29484 19.52383
+        3.27247" geometry="primitive:plane" material="" rotation="90 0 0"></a-entity>
+      <!-- END WALLS -->
       <!-- <a-entity id="rig" movement-controls>
         <a-entity camera position="0 1.8 0" look-controls="pointerLockEnabled:
           true">
@@ -152,11 +170,13 @@
         </a-entity>
       </a-entity> -->
       <!-- Camera -->
-      <a-entity position="0 1.8 0" camera wasd-controls look-controls="pointerLockEnabled: true"></a-entity>">
+      <a-entity position="0 1.8 0" camera wasd-controls
+        look-controls="pointerLockEnabled: true">
 
 
         <!-- Cursor -->
-        <a-entity cursor raycaster="far: .5" geometry="primitive: ring;
+        <a-entity cursor raycaster="far: .5" position="0 0 -0.3"
+          geometry="primitive: ring;
           radiusInner: 0.003; radiusOuter: 0.005"
           material="color: #EE6C15">
         </a-entity>
