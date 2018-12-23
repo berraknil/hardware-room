@@ -151,11 +151,67 @@
 
       </a-entity>
 
-      <!-- Vent -->
-      <a-entity gltf-model="./models/vent/model.gltf" position="-5.895 0.35273
-        -1.09236" scale="1.49418 1.1253 1" rotation="0 90 0">
+      <!-- VENTS LEFT -->
+      <a-entity gltf-model="#vent" position="-5.87313 0.37977
+        -1.3934" scale="1.15049 1.15049 1.15049" rotation="0 90 0">
 
       </a-entity>
+
+      <a-entity gltf-model="#vent" position="-5.87313 0.37977
+        -0.89591" scale="1.15049 1.15049 1.15049" rotation="0 90 0">
+
+      </a-entity>
+
+
+
+      <!-- VENTS RIGHT -->
+      <a-entity gltf-model="./models/vent/model.gltf" position="7.76566 0.37977
+        -0.89591" scale="1.15049 1.15049 1.15049" rotation="0 -90 0">
+      </a-entity>
+
+      <a-entity gltf-model="./models/vent/model.gltf" position="7.76566 0.37977
+        -1.39417" scale="1.15049 1.15049 1.15049" rotation="0 -90 0">
+      </a-entity>
+
+
+
+
+      <!-- AC CONTROL UNIT -->
+      <a-entity position="-5.89456 1.91793 -0.08142" scale="0.055 0.23906
+        0.44307" geometry="" material="">
+        <!-- <a-cylinder position="0.52278 0.31638 0.36199" rotation="0 0 90"
+          scale="0.08485 0.24646 0.04382" material="color:#ff0000" "=""
+          geometry=""></a-cylinder> -->
+        <a-cylinder position="0.60262 0.31638 0.36199" rotation="0 0 90"
+          scale="0.08485 0.24646 0.04382" material="color:#ff0000" "=""
+          geometry=""></a-cylinder>
+        <a-text value="Start AC" position="0.5676 0.31334 0.29025" rotation="0
+          90 0" scale="0.40436 0.68217 0.1" text="value:Start AC;color:#000000"></a-text>
+        <a-cylinder position="0.52278 0.10235 0.36199" rotation="0 0 90"
+          scale="0.08485 0.24646 0.04382" material="color:#000000" "=""
+          geometry=""></a-cylinder>
+
+        <a-text value="Stop AC" position="0.5676 0.10311 0.29025" rotation="0
+          90 0" scale="0.40436 0.68217 0.1" text="value:Stop AC;color:#000000"></a-text>
+        <a-text value="AC Speed" position="0.5676 -0.11928 0.40419" rotation="0
+          90 0" scale="0.30693 0.5178 0.0759" text="value:AC
+          Speed;color:#000000"></a-text>
+
+
+        <a-cylinder position="0.60262 -0.32674 0.35797" rotation="0 0 90"
+          scale="0.06386 0.1855 0.03298" material="color:#ff0000" "=""
+          geometry="">
+          <a-text value="1" position="0.72022 -0.3248 0.37842" rotation="0 90 0"
+            scale="0.23242 0.39209 0.05748" text="value:1;color:#000000"></a-text>
+        </a-cylinder>
+      </a-entity>
+
+
+
+
+
+      <!-- AC CONTROL UNIT END -->
+
 
 
 
