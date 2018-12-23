@@ -16,10 +16,10 @@
     <script
       src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
     <!-- <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script> -->
-    <script src="./audio.js"></script>
   </head>
 
   <body>
+
     <div class="controls">
       <fieldset>
         <legend>Audio settings</legend>
@@ -82,7 +82,27 @@
         <button onclick="log()">Logger</button>
       </fieldset>
     </div>
+    <script>
+        AFRAME.registerComponent('start', {
+       init: function () {
+         this.el.addEventListener('click', function (evt) {
+           
+      console.log('I was clicked');
+           start()
+         });
+       }
+     });
+        AFRAME.registerComponent('stop', {
+       init: function () {
+         this.el.addEventListener('click', function (evt) {
+           
+      console.log('I was clicked');
+           stop()
+         });
+       }
+     });
 
+</script>
     <!-- <a-scene> -->
     <a-scene
       inspector="https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js">
@@ -112,6 +132,8 @@
         <audio id="beep3" src="./assets/audio/sfx/short_beep07.mp3"></audio>
         <audio id="dot-matrix" src="./assets/audio/sfx/dot_matrix.mp3"></audio>
       </a-assets>
+
+
 
       <a-entity>
         <a-entity obj-model="obj: #comp-obj; mtl: #comp-mtl" position="-5 0.1
@@ -177,32 +199,47 @@
 
 
       <!-- AC CONTROL UNIT -->
-      <a-entity position="-5.89456 1.91793 -0.08142" scale="0.055 0.23906
+      <a-entity position="-5.89456 1.988 -0.08142" scale="0.055 0.23906
         0.44307" geometry="" material="">
-        <!-- <a-cylinder position="0.52278 0.31638 0.36199" rotation="0 0 90"
-          scale="0.08485 0.24646 0.04382" material="color:#ff0000" "=""
-          geometry=""></a-cylinder> -->
-        <a-cylinder position="0.60262 0.31638 0.36199" rotation="0 0 90"
+        <!-- START BUTTON -->
+        <a-cylinder start name="start" id="startAC" position="0.60844 0.31584
+          0.36222"
+          rotation="0
+          0 90"
           scale="0.08485 0.24646 0.04382" material="color:#ff0000" "=""
           geometry=""></a-cylinder>
         <a-text value="Start AC" position="0.5676 0.31334 0.29025" rotation="0
           90 0" scale="0.40436 0.68217 0.1" text="value:Start AC;color:#000000"></a-text>
-        <a-cylinder position="0.52278 0.10235 0.36199" rotation="0 0 90"
+        <!-- STOP BUTTON -->
+        <a-cylinder stop id="stopAC" position="0.60243 0.10235 0.36199"
+          rotation="0
+          0 90"
           scale="0.08485 0.24646 0.04382" material="color:#000000" "=""
           geometry=""></a-cylinder>
-
         <a-text value="Stop AC" position="0.5676 0.10311 0.29025" rotation="0
           90 0" scale="0.40436 0.68217 0.1" text="value:Stop AC;color:#000000"></a-text>
-        <a-text value="AC Speed" position="0.5676 -0.11928 0.40419" rotation="0
-          90 0" scale="0.30693 0.5178 0.0759" text="value:AC
-          Speed;color:#000000"></a-text>
-
-
+        <a-text value="AC Speed" position="0.5676 -0.15469 0.40419" rotation="0
+          90 0" scale="0.35202 0.61174 1.00894" text="color:#000000"></a-text>
+        <!-- AC SPEED ONE -->
         <a-cylinder position="0.60262 -0.32674 0.35797" rotation="0 0 90"
-          scale="0.06386 0.1855 0.03298" material="color:#ff0000" "=""
+          scale="0.09976 0.23264 0.06603" material="color:#ff0000" "=""
           geometry="">
-          <a-text value="1" position="0.72022 -0.3248 0.37842" rotation="0 90 0"
-            scale="0.23242 0.39209 0.05748" text="value:1;color:#000000"></a-text>
+          <a-text value="1" position="0.02542 -0.52183 0.68706" rotation="90
+            90 0" scale="7.80625 6.47214 5" text="color:#000000"></a-text>
+        </a-cylinder>
+        <!-- AC SPEED TWO -->
+        <a-cylinder position="0.60262 -0.32674 0.20434" rotation="0 0 90"
+          scale="0.09976 0.23264 0.06603" material="color:#ff0000" "=""
+          geometry="">
+          <a-text value="2" position="0.02542 -0.52183 0.68706" rotation="90 90
+            0" scale="7.80625 6.47214 5" text="color:#000000"></a-text>
+        </a-cylinder>
+        <!-- AC SPEED THREE -->
+        <a-cylinder position="0.60262 -0.32674 0.0456" rotation="0 0 90"
+          scale="0.09976 0.23264 0.06603" material="color:#ff0000" "=""
+          geometry="">
+          <a-text value="3" position="0.02542 -0.52183 0.68706" rotation="90 90
+            0" scale="7.80625 6.47214 5" text="color:#000000"></a-text>
         </a-cylinder>
       </a-entity>
 
@@ -248,7 +285,7 @@
       </a-entity> -->
       <!-- Camera -->
       <a-entity position="0 2 0" camera wasd-controls
-        look-controls>
+        look-controls="pointerLockEnabled: true">
         <!-- <a-entity position="0 1.8 0" camera wasd-controls
         look-controls="pointerLockEnabled: true"> -->
         <!-- Cursor -->
@@ -267,685 +304,9 @@
 
       <a-sky color="grey"></a-sky>
 
-
     </a-scene>
-    <!-- 
-  <script>
-    const fan = new Tone.Synth({
-      volume: -15, // the oscillator volume set to -12dB
-      oscillator: {
-        frequency: 24, // oscillator type to square wave
-      },
-      envelope: {
-        attack: 5,
-        decay: 2,
-        sustain: 1,
-        release: 1
-      }
-    }).toMaster() // connect the synth's output to the filter
+    <script src="./audio.js"></script>
 
-    const noise = new Tone.Noise({
-      type: "pink",
-      volume: -33,
-      fadeIn: "+5",
-    })
-
-
-    // fan.connect(noise)
-
-    const autoFilter = new Tone.AutoFilter({
-      "frequency": "8m",
-      "min": 600,
-      "max": 700
-    }).toMaster()
-
-    noise.connect(autoFilter)
-    fan.triggerAttack(24, "+0.5");
-    noise.start()
-
-
-  </script> -->
-    <script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  </script>
   </body>
 
 
