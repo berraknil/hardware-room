@@ -87,7 +87,6 @@
        init: function () {
          this.el.addEventListener('click', function (evt) {
            
-      console.log('I was clicked');
            start()
          });
        }
@@ -96,8 +95,31 @@
        init: function () {
          this.el.addEventListener('click', function (evt) {
            
-      console.log('I was clicked');
            stop()
+         });
+       }
+     });
+        AFRAME.registerComponent('slow', {
+       init: function () {
+         this.el.addEventListener('click', function (evt) {
+           
+           slowSpeed()
+         });
+       }
+     });
+        AFRAME.registerComponent('fast', {
+       init: function () {
+         this.el.addEventListener('click', function (evt) {
+           
+          fastSpeed()
+         });
+       }
+     });
+        AFRAME.registerComponent('faster', {
+       init: function () {
+         this.el.addEventListener('click', function (evt) {
+    
+           fasterSpeed()
          });
        }
      });
@@ -221,21 +243,21 @@
         <a-text value="AC Speed" position="0.5676 -0.15469 0.40419" rotation="0
           90 0" scale="0.35202 0.61174 1.00894" text="color:#000000"></a-text>
         <!-- AC SPEED ONE -->
-        <a-cylinder position="0.60262 -0.32674 0.35797" rotation="0 0 90"
+        <a-cylinder slow position="0.60262 -0.32674 0.35797" rotation="0 0 90"
           scale="0.09976 0.23264 0.06603" material="color:#ff0000" "=""
           geometry="">
           <a-text value="1" position="0.02542 -0.52183 0.68706" rotation="90
             90 0" scale="7.80625 6.47214 5" text="color:#000000"></a-text>
         </a-cylinder>
         <!-- AC SPEED TWO -->
-        <a-cylinder position="0.60262 -0.32674 0.20434" rotation="0 0 90"
+        <a-cylinder fast position="0.60262 -0.32674 0.20434" rotation="0 0 90"
           scale="0.09976 0.23264 0.06603" material="color:#ff0000" "=""
           geometry="">
           <a-text value="2" position="0.02542 -0.52183 0.68706" rotation="90 90
             0" scale="7.80625 6.47214 5" text="color:#000000"></a-text>
         </a-cylinder>
         <!-- AC SPEED THREE -->
-        <a-cylinder position="0.60262 -0.32674 0.0456" rotation="0 0 90"
+        <a-cylinder faster position="0.60262 -0.32674 0.0456" rotation="0 0 90"
           scale="0.09976 0.23264 0.06603" material="color:#ff0000" "=""
           geometry="">
           <a-text value="3" position="0.02542 -0.52183 0.68706" rotation="90 90
@@ -266,7 +288,7 @@
         scale="17.79488 8.5521 2.80737" geometry="primitive:plane"
         material="color: #4C4B49"></a-entity>
       <!-- BACK -->
-      <a-entity position="0.72316 4.45287 8.7612" rotation="0 180 0"
+      <a-entity position="0.72316 4.45287 3.17619" rotation="0 180 0"
         scale="17.79488 8.5521 2.80737" geometry="primitive:plane"
         material="color: #4C4B49"></a-entity>
       <!-- FRONT -->
