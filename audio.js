@@ -1,11 +1,4 @@
-// https://jsfiddle.net/xyjn4mao/
-
-// const startButton = document.getElementById('startAC');
-// const stopButton = document.getElementById('stopAC');
-
 const fan = new Tone.Synth({
-  // volume: -3, // the oscillator volume set to -12dB
-
   oscillator: {
     frequency: 22,
     type: 'triangle'
@@ -23,14 +16,10 @@ fan.chain(fanFader, Tone.Master);
 
 const noise = new Tone.Noise({
   type: 'pink',
-  // volume: -22,
   fadeIn: '5'
 });
 
-// fan.connect(noise)
-
 const autoFilter = new Tone.AutoFilter({
-  // frequency: '8m',
   frequency: '1',
   min: 400,
   max: 500
@@ -40,10 +29,8 @@ const noiseFader = new Tone.Volume(-8);
 noise.chain(noiseFader, autoFilter, Tone.Master);
 
 Tone.Master.volume.value = -9;
-// noise.connect(autoFilter)
 
 const start = () => {
-  // fan.triggerAttack(24, '+0.5')
   fan.triggerAttack(22, '+0.5', 0.5);
   noise.start();
 };
@@ -54,14 +41,12 @@ const stop = () => {
 };
 
 const setRotorVolume = val => {
-  // fan.volume.value = val
   fanFader.volume.value = val;
   rotorVolume.value = val;
   rotorVolumeValue.value = val;
   console.log(fanFader.volume.value);
 };
 const setRotorFrequency = val => {
-  // fan.volume.value = val
   fan.frequency.value = val;
   rotorFreq.value = val;
   rotorFreqValue.value = val;
@@ -69,15 +54,12 @@ const setRotorFrequency = val => {
 };
 
 const setNoiseVolume = val => {
-  // fan.volume.value = val
   noiseFader.volume.value = val;
-
   noiseVolume.value = val;
   noiseVolumeValue.value = val;
   console.log(noiseFader.volume.value);
 };
 const setMasterVolume = val => {
-  // fan.volume.value = val
   Tone.Master.volume.value = val;
   console.log(Tone.Master.volume.value);
 };
@@ -105,26 +87,10 @@ const fasterSpeed = () => {
   setValues(3, 40, 0);
 };
 
-// document.querySelectorAll('.ac-control').forEach(function(slider) {
-//   slider.addEventListener('input', function(e) {
-//     synth.envelope[e.target.id] = parseFloat(e.target.value)
-//     document.getElementById(`${e.target.id}Value`).value = parseFloat(
-//       e.target.value
-//     )
-//   })
-// })
-
-// document.querySelectorAll('.ac-speed').forEach(function(radio) {
-//   radio.addEventListener('input', function(e) {
-//     setValues(...e.target.value)
-//   })
-// })
-
-// filter the noise more on the middle frequencies
+// filter the noise more on the middle range frequencies
 // put dedicated controls for volume and frequency and filters
 
 const log = () => {
-  // console.log(fan.volume.value)
   console.log(`
   rotorVol: ${fanFader.volume.value}
   rotorFreq: ${fan.frequency.value}
@@ -132,7 +98,3 @@ const log = () => {
 `);
   console.log(Tone.Master.volume.value);
 };
-// // https://jsfiddle.net/xyjn4mao/
-
-// startButton.onclick = start();
-// stopButton.onclick = stop();

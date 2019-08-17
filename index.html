@@ -8,14 +8,11 @@
     <title>Hardware Room</title>
     <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
     <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
-    <!-- <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.0.1/Tone.min.js"></script>
-    <!-- <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.1.1/dist/aframe-physics-system.min.js"></script> -->
     <script
       src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.0.2/dist/aframe-extras.min.js"></script>
     <script
       src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
-    <!-- <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script> -->
   </head>
 
   <body>
@@ -142,7 +139,6 @@
         <a-asset-item id="ac-mtl" src="./models/1286_Air Conditioner.mtl"></a-asset-item>
         <a-asset-item id="door" src="./models/Door 2.gltf"></a-asset-item>
         <a-asset-item id="vent" src="./models/vent/model.gltf"></a-asset-item>
-        <!-- <video id="processing" autoplay loop="true" src="./assets/processing.mp4"></video> -->
         <!-- // AUDIO FILES -->
         <audio id="computer-startup"
           src="./assets/audio/sfx/computer-startup.mp3"></audio>
@@ -183,12 +179,6 @@
           -8.3" rotation="0 180 0" scale="0.25 0.25 0.25"></a-entity>
       </a-entity>
 
-
-      <!-- <a-entity obj-model="obj: #ac-obj; mtl: #ac-mtl"
-        position="-5.508842561829076 4 0.08716670674968241" rotation="0 0 0"
-        scale="0.010 0.010 0.010">
-
-      </a-entity> -->
       <!-- Door -->
       <a-entity gltf-model="#door" position="-5.90584 0.16611 1.66104"
         scale="0.01 0.009 0.01" rotation="0 90 0">
@@ -264,20 +254,9 @@
             0" scale="7.80625 6.47214 5" text="color:#000000"></a-text>
         </a-cylinder>
       </a-entity>
-
-
-
-
-
       <!-- AC CONTROL UNIT END -->
 
 
-
-
-      <!-- <a-entity obj-model="obj: #ac-obj; mtl: #ac-mtl" position="-5.73906
-        1.24307 -0.10275" scale="0.01 0.01 0.01">
-
-      </a-entity> -->
       <!-- WALLS -->
       <!-- LEFT -->
       <a-entity position="-5.92206 4.45287 -0.02602" rotation="0 90 0"
@@ -298,18 +277,11 @@
       <a-entity position="0.72316 8.68093 -0.17239" scale="18.29484 19.52383
         3.27247" geometry="primitive:plane" material="" rotation="90 0 0"></a-entity>
       <!-- END WALLS -->
-      <!-- <a-entity id="rig" movement-controls>
-        <a-entity camera position="0 1.8 0" look-controls="pointerLockEnabled:
-          true">
 
-          <a-cursor></a-cursor>
-        </a-entity>
-      </a-entity> -->
+      
       <!-- Camera -->
       <a-entity position="0 2 0" camera wasd-controls
         look-controls="pointerLockEnabled: true">
-        <!-- <a-entity position="0 1.8 0" camera wasd-controls
-        look-controls="pointerLockEnabled: true"> -->
         <!-- Cursor -->
         <a-entity cursor raycaster="far: .5" position="0 0 -0.3"
           geometry="primitive: ring;
@@ -320,10 +292,7 @@
 
 
       <a-plane color="black" rotation="-90 0 0" position="0 0.1 0" width="20"
-        height="20">
-
-      </a-plane>
-
+        height="20"></a-plane>
       <a-sky color="grey"></a-sky>
 
     </a-scene>
